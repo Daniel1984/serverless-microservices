@@ -1,16 +1,17 @@
 package main
 
 import (
-	"fmt"
-
+	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 )
 
-func handler() (string, error) {
-	return "Lambda response", nil
+func handler() (events.APIGatewayProxyResponse, error) {
+	return events.APIGatewayProxyResponse{
+		StatusCode: 200,
+		Body:       "Welcome to Serverless world",
+	}, nil
 }
 
 func main() {
-	fmt.Println("vim-go")
 	lambda.Start(handler)
 }
